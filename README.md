@@ -8,7 +8,7 @@
   <img src="https://img.shields.io/badge/License-MIT-green?style=flat-square" alt="License" />
   <br />
   <img src="https://img.shields.io/badge/Status-Active-success?style=flat-square" alt="Status" />
-  <a href="#"><img src="https://img.shields.io/badge/Live Demo-Pending-6b7280?style=flat-square" alt="Live Demo" /></a>
+  <a href="https://smart-life-planner-orpin.vercel.app"><img src="https://img.shields.io/badge/Live Demo-6b7280?style=flat-square" alt="Live Demo" /></a>
 </p>
 
 <h1 align="center">SMART Life Planner</h1>
