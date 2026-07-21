@@ -1,0 +1,10 @@
+{
+  "framework": "nextjs",
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "installCommand": "npm install",
+  "crons": [],
+  "env": {
+    "NEXT_PUBLIC_DEPLOYED": "true"
+  }
+}

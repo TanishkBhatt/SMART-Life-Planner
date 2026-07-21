@@ -1,0 +1,184 @@
+datasource db {
+  provider = "postgresql"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id             String   @id @default(cuid())
+  name           String?
+  email          String   @unique
+  hashedPassword String
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  todos            Todo[]
+  goals            Goal[]
+  events           Event[]
+  timeLogs         TimeLog[]
+  habits           Habit[]
+  diaryEntries     DiaryEntry[]
+  journalEntries   JournalEntry[]
+  notes            Note[]
+  moodLogs         MoodLog[]
+  pomodoroSessions PomodoroSession[]
+}
+
+model Todo {
+  id          String   @id @default(cuid())
+  userId      String
+  title       String
+  description String   @default("")
+  status      String   @default("pending") // pending | in_progress | completed
+  priority    String   @default("medium")  // low | medium | high
+  dueDate     DateTime?
+  category    String   @default("")
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Goal {
+  id          String   @id @default(cuid())
+  userId      String
+  title       String
+  description String   @default("")
+  targetDate  DateTime?
+  status      String   @default("active") // active | completed | cancelled
+  color       String   @default("#6366f1")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  milestones  Milestone[]
+}
+
+model Milestone {
+  id        String   @id @default(cuid())
+  goalId    String
+  title     String
+  completed Boolean  @default(false)
+  dueDate   DateTime?
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  goal      Goal     @relation(fields: [goalId], references: [id], onDelete: Cascade)
+}
+
+model Event {
+  id          String   @id @default(cuid())
+  userId      String
+  title       String
+  description String   @default("")
+  start       DateTime
+  end         DateTime?
+  allDay      Boolean  @default(false)
+  color       String   @default("#6366f1")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model TimeLog {
+  id          String   @id @default(cuid())
+  userId      String
+  description String
+  duration    Int      // minutes
+  category    String   @default("")
+  date        DateTime
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Habit {
+  id          String   @id @default(cuid())
+  userId      String
+  name        String
+  description String   @default("")
+  frequency   String   @default("daily") // daily | weekly
+  color       String   @default("#6366f1")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  logs        HabitLog[]
+  streak      HabitStreak?
+}
+
+model HabitLog {
+  id        String   @id @default(cuid())
+  habitId   String
+  date      DateTime
+  completed Boolean  @default(true)
+  createdAt DateTime @default(now())
+  habit     Habit    @relation(fields: [habitId], references: [id], onDelete: Cascade)
+}
+
+model HabitStreak {
+  id            String   @id @default(cuid())
+  habitId       String   @unique
+  currentStreak Int      @default(0)
+  longestStreak Int      @default(0)
+  xp            Int      @default(0)
+  level         Int      @default(1)
+  lastLogDate   DateTime?
+  habit         Habit    @relation(fields: [habitId], references: [id], onDelete: Cascade)
+}
+
+model DiaryEntry {
+  id        String   @id @default(cuid())
+  userId    String
+  title     String
+  content   String
+  date      DateTime
+  mood      Int      @default(3) // 1-5
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model JournalEntry {
+  id        String   @id @default(cuid())
+  userId    String
+  title     String
+  content   String
+  tags      String   @default("[]") // JSON array
+  pinned    Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Note {
+  id        String   @id @default(cuid())
+  userId    String
+  title     String
+  content   String
+  tags      String   @default("[]")
+  pinned    Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model MoodLog {
+  id        String   @id @default(cuid())
+  userId    String
+  mood      Int      // 1-5
+  note      String   @default("")
+  date      DateTime
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model PomodoroSession {
+  id                String   @id @default(cuid())
+  userId            String
+  duration          Int      // minutes
+  intervalsCompleted Int     @default(0)
+  date              DateTime
+  createdAt         DateTime @default(now())
+  user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
