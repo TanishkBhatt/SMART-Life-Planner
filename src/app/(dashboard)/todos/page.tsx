@@ -107,7 +107,7 @@ export default function TodosPage() {
         <Card>
           <CardContent className="pt-6">
             <form onSubmit={saveTodo} className="space-y-4">
-              <div className="grid gap-4 sm:grid-cols-2">
+              <div className="grid gap-4 md:grid-cols-2">
                 <div className="sm:col-span-2">
                   <input
                     value={form.title}
@@ -186,7 +186,7 @@ export default function TodosPage() {
                     <span className={`rounded px-1.5 py-0.5 text-[10px] font-medium ${priorityColors[todo.priority] || priorityColors.medium}`}>{todo.priority}</span>
                     {todo.category && (() => {
                       const cat = getCategory(todo.category)
-                      return <span className="rounded bg-indigo-50 px-1.5 py-0.5 text-[10px] font-medium text-indigo-600 dark:bg-indigo-900/10 dark:text-indigo-400">{cat ? `${cat.emoji} ${cat.label}` : todo.category}</span>
+                      return <span className="rounded bg-indigo-50 px-1.5 py-0.5 text-[10px] font-medium text-indigo-600 dark:bg-indigo-900/10 dark:text-indigo-400">{cat ? cat.label : todo.category}</span>
                     })()}
                     {todo.dueDate && <span className="text-[10px] text-slate-400">{formatDate(todo.dueDate)}</span>}
                   </div>

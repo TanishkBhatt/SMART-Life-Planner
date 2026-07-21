@@ -82,7 +82,7 @@ export default function PomodoroPage() {
         <h1 className="text-2xl font-bold">Pomodoro</h1>
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-[1fr_300px]">
+      <div className="grid gap-6 xl:grid-cols-[1fr_300px]">
         <Card>
           <CardContent className="flex flex-col items-center py-10">
             <div className="mb-2 text-sm font-medium text-slate-500 uppercase tracking-wider">{phase}</div>

@@ -74,7 +74,7 @@ export default function CalendarPage() {
         <Button onClick={() => { setShowForm(true); setSelectedDay(null) }}><Plus className="mr-1.5 h-4 w-4" /> Add Event</Button>
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-[1fr_300px]">
+      <div className="grid gap-6 xl:grid-cols-[1fr_300px]">
         <Card>
           <CardContent className="pt-6">
             <div className="mb-4 flex items-center justify-between">
@@ -97,7 +97,7 @@ export default function CalendarPage() {
                   <div
                     key={i}
                     onClick={() => { if (day) { setSelectedDay(new Date(year, month, day)); setShowForm(true); setForm({ ...form, start: `${year}-${String(month + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}T09:00` }) } }}
-                    className={`min-h-[80px] cursor-pointer border-b border-r border-slate-100 p-1 text-xs transition-colors hover:bg-slate-50 dark:border-slate-800 dark:hover:bg-slate-800/50 ${!day ? "bg-slate-50/50 dark:bg-slate-900/50" : ""} ${isToday ? "bg-indigo-50/50 dark:bg-indigo-900/10" : ""}`}
+                    className={`min-h-[60px] cursor-pointer border-b border-r border-slate-100 p-1 text-xs transition-colors hover:bg-slate-50 dark:border-slate-800 dark:hover:bg-slate-800/50 sm:min-h-[80px] ${!day ? "bg-slate-50/50 dark:bg-slate-900/50" : ""} ${isToday ? "bg-indigo-50/50 dark:bg-indigo-900/10" : ""}`}
                   >
                     {day && (
                       <>

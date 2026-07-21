@@ -73,7 +73,7 @@ export default function TimeLogsPage() {
                 <Clock className="h-4 w-4 text-slate-400" />
                 <div className="flex-1 min-w-0">
                   <p className="text-sm font-medium">{log.description}</p>
-                  <p className="text-xs text-slate-400">{log.category && (() => { const c = getCategory(log.category); return c ? `${c.emoji} ${c.label} · ` : `${log.category} · ` })()}{formatDate(log.date)}</p>
+                  <p className="text-xs text-slate-400">{log.category && (() => { const c = getCategory(log.category); return c ? `${c.label} · ` : `${log.category} · ` })()}{formatDate(log.date)}</p>
                 </div>
                 <span className="text-sm font-semibold text-indigo-600 dark:text-indigo-400">{Math.floor(log.duration / 60)}h {log.duration % 60}m</span>
                 <button onClick={async () => { await fetch(`/api/timelogs/${log.id}`, { method: "DELETE" }); fetchLogs() }}

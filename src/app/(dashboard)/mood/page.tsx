@@ -49,8 +49,8 @@ export default function MoodPage() {
         <h1 className="text-2xl font-bold">Mood Tracker</h1>
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-3">
-        <Card className="lg:col-span-2">
+      <div className="grid gap-6 xl:grid-cols-3">
+        <Card className="xl:col-span-2">
           <CardHeader>
             <CardTitle>How are you feeling today?</CardTitle>
           </CardHeader>
@@ -67,7 +67,7 @@ export default function MoodPage() {
               )
             })() : (
               <>
-                <div className="flex justify-center gap-4 py-4">
+                <div className="flex flex-wrap justify-center gap-2 py-4">
                   {moods.map((m) => {
                     const Icon = m.icon
                     return (

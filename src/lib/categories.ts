@@ -1,12 +1,13 @@
 export const CATEGORIES = [
-  { value: "study", label: "Study", emoji: "📚" },
-  { value: "work", label: "Work", emoji: "💼" },
-  { value: "health", label: "Health", emoji: "❤️" },
-  { value: "sports", label: "Sports", emoji: "🏃" },
-  { value: "finance", label: "Finance", emoji: "💰" },
-  { value: "peace", label: "Peace", emoji: "🧘" },
-  { value: "family", label: "Family Time", emoji: "👨‍👩‍👧‍👦" },
-  { value: "custom", label: "Custom...", emoji: "✨" },
+  { value: "study", label: "Study" },
+  { value: "work", label: "Work" },
+  { value: "health", label: "Health" },
+  { value: "sports", label: "Sports" },
+  { value: "entertainment", label: "Entertainment" },
+  { value: "finance", label: "Finance" },
+  { value: "peace", label: "Peace" },
+  { value: "family", label: "Family Time" },
+  { value: "custom", label: "Custom..." },
 ] as const
 
 export type CategoryValue = (typeof CATEGORIES)[number]["value"]

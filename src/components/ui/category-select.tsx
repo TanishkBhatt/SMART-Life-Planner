@@ -52,7 +52,7 @@ export function CategorySelect({ value, onChange, placeholder = "Category" }: Ca
       <option value="">{placeholder}</option>
       {CATEGORIES.map((cat) => (
         <option key={cat.value} value={cat.value}>
-          {cat.emoji} {cat.label}
+          {cat.label}
         </option>
       ))}
     </select>

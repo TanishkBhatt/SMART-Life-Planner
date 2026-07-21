@@ -30,7 +30,7 @@ export default async function DashboardPage() {
     year: "numeric",
   })
 
-  const moodEmojis = ["😢", "😟", "😐", "😊", "🌟"]
+  const moodLabels = ["Awful", "Bad", "Okay", "Good", "Great"]
 
   return (
     <div className="space-y-6">
@@ -82,7 +82,7 @@ export default async function DashboardPage() {
             <Smile className="h-4 w-4 text-rose-500" />
           </CardHeader>
           <CardContent>
-            <p className="text-3xl font-bold">{stats.mood ? moodEmojis[stats.mood - 1] : "--"}</p>
+            <p className="text-3xl font-bold">{stats.mood ? moodLabels[stats.mood - 1] : "--"}</p>
           </CardContent>
         </Card>
       </div>
