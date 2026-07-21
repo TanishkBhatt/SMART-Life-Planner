@@ -18,6 +18,7 @@ import {
   StickyNote,
   Smile,
   BarChart3,
+  Settings,
 } from "lucide-react"
 
 const navItems = [
@@ -33,6 +34,7 @@ const navItems = [
   { label: "Notes", href: "/notes", icon: StickyNote },
   { label: "Mood", href: "/mood", icon: Smile },
   { label: "Reports", href: "/reports", icon: BarChart3 },
+  { label: "Settings", href: "/settings", icon: Settings },
 ]
 
 export function Sidebar() {
